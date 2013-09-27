@@ -1,0 +1,45 @@
+= Polls
+
+Read http://www.redmine.org/projects/redmine/wiki/Plugin_Tutorial and Create A Redmine plugin for managing polls. 
+
+=== INSTALL
+
+# rake redmine:plugins:migrate RAILS_ENV=production
+
+Restart HTTP daemon to make changes effect
+
+=== USAGE
+
+==== Create 2 demo polls
+
+Go to /path/to/redmine/htdocs directory
+
+  htdocs# ruby script/rails console 
+  
+  irb(main):001:0> Poll.create(:question => "Can you see this poll")
+     (0.2ms)  BEGIN
+    SQL (0.5ms)  INSERT INTO `polls` (`no`, `question`, `yes`) VALUES (0, 'Can you see this poll', 0)
+     (45.1ms)  COMMIT
+    => #<Poll id: 1, question: "Can you see this poll", yes: 0, no: 0>
+  
+  irb(main):002:0> Poll.create(:question => "And can you see this other poll")
+     (0.3ms)  BEGIN
+    SQL (0.5ms)  INSERT INTO `polls` (`no`, `question`, `yes`) VALUES (0, 'And can you see this other poll?', 0)
+     (25.1ms)  COMMIT
+    => #<Poll id: 2, question: "And can you see this other poll", yes: 0, no: 0>
+  
+  irb(main):003:0> exit
+
+No need to restart HTTP daemon after create new polls.
+
+
+=== COPYRIGHT
+
+(c) quangchinh [[at]] gmail.com
+
+
+=== LICENSE
+
+http://www.gnu.org/licenses/gpl-2.0.html
+
+

@@ -1,0 +1,13 @@
+<h2>Polls - Bỏ phiếu (Có/Không)</h2>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'voting', :plugin => 'polls' %>
+<% end %>
+
+<% @polls.each do |poll| %>
+  <p>
+  <%= poll.question %>?
+  <%= link_to 'Có', { :action => 'vote', :id => poll[:id], :answer => 'yes' }, :method => :post %> (<%= poll.yes %>) /
+  <%= link_to 'Không', { :action => 'vote', :id => poll[:id], :answer => 'no' }, :method => :post %> (<%= poll.no %>)
+  </p>
+<% end %>
